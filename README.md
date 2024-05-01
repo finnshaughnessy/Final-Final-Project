@@ -1,11 +1,12 @@
 # Final-Final-Project
-For the project on developing a Python-based web scraper for job postings:
+For the project on developing a Python-based weather dashboard:
 
-Project Description: This project aims to develop a Python-based web scraper that automatically collects and analyzes job postings from various online platforms. It will feature three main functions: 1) scraping job listings based on user-defined criteria, such as location and job title; 2) analyzing the frequency of skill requirements across postings to identify trends; 3) generating a summary report with insights on the job market. The goal is to aid job seekers in understanding current market demands. Work will be divided based on coding, data analysis, and report generation tasks.
+**Project Description**: This project aims to develop a Python-based weather dashboard that fetches and displays current weather conditions and forecasts from an API. It will feature three main functions: 1) retrieving weather data based on user-inputted city names; 2) displaying current weather conditions including temperature, humidity, and wind; 3) providing a 5-day weather forecast to help users plan ahead. The goal is to offer a user-friendly interface for quick access to weather information, aiding in daily planning and event scheduling. The project will involve coding, API interaction, and creating a graphical user interface.
 
-Function Descriptions:
+**Function Descriptions**:
 
-a. scrape_jobs(criteria): Scrapes job listings matching the given criteria.
-b. analyze_skills(job_listings): Analyzes listings to identify common skill requirements.
-c. generate_summary_report(analysis_results): Produces a report detailing job market trends and insights.
-This description outlines the project's goals, key functionalities, and its utility in providing market insights to job seekers.
+a. **get_current_weather(city)**: Retrieves current weather data for the specified city.  
+b. **display_weather(data)**: Displays the current weather conditions on the dashboard.  
+c. **get_weather_forecast(city)**: Fetches a 5-day weather forecast for the specified city.  
+
+This description outlines the project's objectives, key functionalities, and its utility in providing immediate and forecasted weather information to users.
