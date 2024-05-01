@@ -1,89 +1,73 @@
-
-
 Documentation File: `README.md`
 
-Introduction to the Job Market Scraper**
-- Purpose: This section explains the scraper's aim to automate job listing collection and analysis, aiding job seekers by providing market trends and demanded skills.
-- Benefits:Highlights how the tool simplifies job search efforts and provides actionable insights for career development.
+Introduction to the Weather Dashboard**
+- Purpose: This section outlines the dashboard's goal to provide real-time weather information and forecasts, helping users make informed decisions based on current and upcoming weather conditions.
+- Benefits: Emphasizes the convenience of accessing tailored weather information from multiple locations, aiding in daily planning and event scheduling.
 
 Functionality Overview:
-- **scrape_jobs(criteria):** Describes how users can scrape job listings by specifying search criteria such as job title and location. Criteria should be passed as a dictionary.
-- **analyze_skills(job_listings):** Explains the analysis of job listings to count skill frequencies, requiring a list of job listings as input.
-- **generate_summary_report(analysis_results):** Outlines the process for creating a summary report from the analysis results, detailing market trends and insights.
+- get_current_weather(city): Describes how users can retrieve current weather conditions for a specified city. The city name is passed as a string.
+- display_weather(data): Details the display functionality that presents the weather data on the user interface, including temperature, humidity, and wind details.
+- get_weather_forecast(city): Explains how the dashboard fetches a 5-day weather forecast for a specified city, helping users plan for future events and activities.
 
 Input Data Structure:
-- The input format for `scrape_jobs` is detailed, specifying required dictionary keys for search parameters.
-- Expected format and content for job listing data are described, highlighting necessary data fields (e.g., title, company, skills) and their data types.
+- The input format for `get_current_weather` and `get_weather_forecast` is detailed, specifying the city as a string.
+- Expected format and content for weather data are described, highlighting necessary data fields (e.g., temperature, humidity, forecast) and their data types.
 
 Example Use Cases:
-Example Use Cases
-Use Case 1: Scraping Job Listings for Data Scientist Roles in New York
-Objective: Collect job listings for the position of Data Scientist located in New York.
+- Use Case 1: Retrieving Current Weather for San Diego
+  - Objective: Fetch the current weather conditions for San Diego.
+  - Code Snippet:
+    ```python
+    from weather_dashboard import get_current_weather
 
-Code Snippet:from job_scraper import scrape_jobs
+    # Retrieve current weather for San Diego
+    current_weather = get_current_weather('San Diego')
+    print(current_weather)
+    ```
+  - Expected Outcome: This will print the current weather conditions in San Diego, including temperature, humidity, and wind speed.
 
-# Define search criteria
-criteria = {
-    'title': 'Data Scientist',
-    'location': 'New York'
-}
+- Use Case 2: Displaying Weather Information**
+  - Objective: Display the retrieved weather data on the dashboard.
+  - Code Snippet:
+    ```python
+    from weather_dashboard import display_weather
 
-# Execute scraping function
-job_listings = scrape_jobs(criteria)
+    # Assuming current_weather is obtained from the previous use case
+    display_weather(current_weather)
+    ```
+  - Expected Outcome: The current weather data for San Diego is displayed on the user interface of the dashboard.
 
-print(f"Number of jobs found: {len(job_listings)}")
+- Use Case 3: Getting a 5-Day Weather Forecast for San Diego**
+  - Objective: Obtain a 5-day weather forecast for San Diego.
+  - Code Snippet:
+    ```python
+    from weather_dashboard import get_weather_forecast
 
-Expected Outcome: This will print the number of Data Scientist positions found in New York. The job_listings variable will contain a list of dictionaries, each representing a job posting with details such as the job title, company, and skills required.
+    # Fetch the 5-day forecast for San Diego
+    weather_forecast = get_weather_forecast('San Diego')
+    print(weather_forecast)
+    ```
+  - Expected Outcome: This code retrieves and prints the 5-day weather forecast for San Diego, providing a daily breakdown of expected conditions.
 
-Use Case 2: Analyzing Skill Frequencies from Scraped Job Listings
-Objective: After collecting job listings, analyze the data to identify the top skills required for Data Scientist positions.
+Python Script File: `weather_dashboard.py`
 
-Code Snippet: from job_scraper import scrape_jobs, analyze_skills
+- get_current_weather(city)**: Fetches current weather data for a specified city.
+  - Input: `city` (str) - Name of the city.
+  - Output: Weather data (dict).
+- display_weather(data): Displays the weather data on the dashboard.
+  - Input: `data` (dict) - Current weather data.
+  - Output: None (updates UI).
+- get_weather_forecast(city): Retrieves a 5-day weather forecast for a specified city.
+  - Input: `city` (str) - Name of the city.
+  - Output: Forecast data (list of dicts).
 
-# Assuming job_listings is obtained from the previous use case
-# Analyze the skills from the job listings
-skills_analysis = analyze_skills(job_listings)
+Test File: `test_weather_dashboard.py`
 
-# Print the top 5 skills
-top_skills = sorted(skills_analysis.items(), key=lambda x: x[1], reverse=True)[:5]
-for skill, count in top_skills:
-    print(f"{skill}: {count} times mentioned")
-    
-Expected Outcome: This will display the top 5 skills mentioned in the job listings for Data Scientist positions, along with how many times each skill was mentioned. This information helps job seekers understand which skills are currently in demand.
-
-Use Case 3: Generating a Summary Report on Job Market Trends
-Objective: Generate a report summarizing the analysis results, providing insights into the job market for Data Scientist roles.
-
-Code Snippet: from job_scraper import scrape_jobs, analyze_skills, generate_summary_report
-
-# Assuming skills_analysis is obtained from the previous use case
-# Generate a summary report
-summary_report = generate_summary_report(skills_analysis)
-
-print(summary_report)
-
-Expected Outcome: This code generates a text-based summary report detailing the analysis of job listings, including key trends like the most in-demand skills. The print statement outputs the summary to the console, but this could also be written to a file for permanent storage.
-
-Python Script File: `job_scraper.py`
-
-- **scrape_jobs(criteria):** Scrapes job listings matching criteria.
-  - *Input:* `criteria` (dict) - Search parameters.
-  - *Output:* List of job listings (list of dicts).
-- **analyze_skills(job_listings):** Analyzes skill frequencies in listings.
-  - *Input:* `job_listings` (list) - Scraped job listings.
-  - *Output:* Skill frequency analysis (dict).
-- **generate_summary_report(analysis_results):** Generates a report on job market trends.
-  - *Input:* `analysis_results` (dict) - Results from `analyze_skills`.
-  - *Output:* Summary report (text file or print to console).
-
-### Test File: `test_job_scraper.py`
-
-- **Narrative Test Plan:**
-  - Describes the end-to-end testing process, beginning with scraping job listings using predefined criteria, followed by analyzing these listings for skill requirements, and concluding with generating a summary report.
+- Narrative Test Plan:
+  - Describes the end-to-end testing process, starting with fetching current weather data, displaying it, and retrieving a forecast.
   - This section explains how to validate the correctness and effectiveness of each function within the workflow.
-- **Example Data Reference:**
-  - Includes a brief about example job listing data provided in a JSON file. This data will serve as input for testing the `analyze_skills` and `generate_summary_report` functions without needing to perform live scrapes.
-- **Running the Test:**
+- Example Data Reference:
+  - Includes details about example weather data provided in a JSON file. This data will serve as input for testing the `display_weather` and `get_weather_forecast` functions without needing to perform live fetches.
+- Running the Test:
   - Detailed instructions on how to execute the test file, including any necessary setup or configuration.
   - Explanation of expected outcomes to verify the test's success.
-
