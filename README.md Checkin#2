@@ -1,73 +1,74 @@
 Documentation File: `README.md`
 
-Introduction to the Weather Dashboard**
-- Purpose: This section outlines the dashboard's goal to provide real-time weather information and forecasts, helping users make informed decisions based on current and upcoming weather conditions.
-- Benefits: Emphasizes the convenience of accessing tailored weather information from multiple locations, aiding in daily planning and event scheduling.
+Introduction to the Personal Budget Tracker
+- Purpose: This section outlines the tracker's goal to provide a simple and intuitive interface for users to manage their monthly finances, allowing for easy tracking of income, expenses, and overall financial health.
+- Benefits: Highlights the convenience of tracking and managing finances from one place, aiding in better financial decision-making and budgeting efficiency.
 
 Functionality Overview:
-- get_current_weather(city): Describes how users can retrieve current weather conditions for a specified city. The city name is passed as a string.
-- display_weather(data): Details the display functionality that presents the weather data on the user interface, including temperature, humidity, and wind details.
-- get_weather_forecast(city): Explains how the dashboard fetches a 5-day weather forecast for a specified city, helping users plan for future events and activities.
+- input_financial_data(): Describes how users can input their monthly income and categorized expenses. Users are prompted to enter values which are stored for processing.
+- calculate_balance(): Details the functionality that calculates the total income, expenses, and the remaining balance, providing a clear financial overview.
+- display_budget_summary(): Explains how the tracker provides a visual summary and textual budgeting tips based on the user's spending habits and remaining balance.
 
 Input Data Structure:
-- The input format for `get_current_weather` and `get_weather_forecast` is detailed, specifying the city as a string.
-- Expected format and content for weather data are described, highlighting necessary data fields (e.g., temperature, humidity, forecast) and their data types.
+- The input format for `input_financial_data` includes categories as strings and amounts as floating-point numbers.
+- Expected format and content for financial data are described, specifying necessary data fields (e.g., category, amount) and their data types.
 
 Example Use Cases:
-- Use Case 1: Retrieving Current Weather for San Diego
-  - Objective: Fetch the current weather conditions for San Diego.
+- Use Case 1: Inputting Monthly Finances**
+  - Objective: Input the monthly income and expenses into the budget tracker.
   - Code Snippet:
     ```python
-    from weather_dashboard import get_current_weather
+    from budget_tracker import input_financial_data
 
-    # Retrieve current weather for San Diego
-    current_weather = get_current_weather('San Diego')
-    print(current_weather)
+     Input financial data for the month
+    input_financial_data()
     ```
-  - Expected Outcome: This will print the current weather conditions in San Diego, including temperature, humidity, and wind speed.
+  - Expected Outcome: This will store the user's financial data in the system for further processing.
 
-- Use Case 2: Displaying Weather Information**
-  - Objective: Display the retrieved weather data on the dashboard.
+- Use Case 2: Calculating and Displaying Balance
+  - Objective: Calculate the total expenses and remaining balance after expenses.
   - Code Snippet:
     ```python
-    from weather_dashboard import display_weather
+    from budget_tracker import calculate_balance, display_budget_summary
 
-    # Assuming current_weather is obtained from the previous use case
-    display_weather(current_weather)
+    Calculate and display budget summary
+    balance = calculate_balance()
+    display_budget_summary(balance)
     ```
-  - Expected Outcome: The current weather data for San Diego is displayed on the user interface of the dashboard.
+  - Expected Outcome: The balance and a summary of financial activity are displayed, offering insights into spending patterns.
 
-- Use Case 3: Getting a 5-Day Weather Forecast for San Diego**
-  - Objective: Obtain a 5-day weather forecast for San Diego.
+- Use Case 3: Generating Budget Tips
+  - Objective: Obtain personalized budgeting tips based on current financial status.
   - Code Snippet:
     ```python
-    from weather_dashboard import get_weather_forecast
+    from budget_tracker import generate_budget_tips
 
-    # Fetch the 5-day forecast for San Diego
-    weather_forecast = get_weather_forecast('San Diego')
-    print(weather_forecast)
+    Generate and display budgeting tips
+    tips = generate_budget_tips()
+    print(tips)
     ```
-  - Expected Outcome: This code retrieves and prints the 5-day weather forecast for San Diego, providing a daily breakdown of expected conditions.
+  - Expected Outcome: This code retrieves and prints personalized budgeting advice to help users optimize their financial planning.
 
-Python Script File: `weather_dashboard.py`
+Python Script File: `budget_tracker.py`
 
-- get_current_weather(city)**: Fetches current weather data for a specified city.
-  - Input: `city` (str) - Name of the city.
-  - Output: Weather data (dict).
-- display_weather(data): Displays the weather data on the dashboard.
-  - Input: `data` (dict) - Current weather data.
+- input_financial_data(): Allows user to input financial data.
+  - Input: None (user interaction).
+  - Output: None (data stored internally).
+- calculate_balance(): Calculates and returns the balance.
+  - Input: None.
+  - Output: `balance` (float).
+- display_budget_summary(balance): Displays a summary of finances on the interface.
+  - Input: `balance` (float).
   - Output: None (updates UI).
-- get_weather_forecast(city): Retrieves a 5-day weather forecast for a specified city.
-  - Input: `city` (str) - Name of the city.
-  - Output: Forecast data (list of dicts).
 
-Test File: `test_weather_dashboard.py`
+Test File: `test_budget_tracker.py`
 
 - Narrative Test Plan:
-  - Describes the end-to-end testing process, starting with fetching current weather data, displaying it, and retrieving a forecast.
+  - Describes the end-to-end testing process, starting with inputting financial data, calculating the balance, and displaying the budget summary.
   - This section explains how to validate the correctness and effectiveness of each function within the workflow.
 - Example Data Reference:
-  - Includes details about example weather data provided in a JSON file. This data will serve as input for testing the `display_weather` and `get_weather_forecast` functions without needing to perform live fetches.
+  - Includes details about example financial data provided in a JSON file. This data will serve as input for testing the `calculate_balance` and `display_budget_summary` functions without needing live input.
 - Running the Test:
   - Detailed instructions on how to execute the test file, including any necessary setup or configuration.
   - Explanation of expected outcomes to verify the test's success.
+
