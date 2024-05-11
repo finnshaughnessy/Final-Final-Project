@@ -1,0 +1,14 @@
+{
+    "tests": [
+        {
+            "income": 1000,
+            "expenses": {"rent": 500, "groceries": 200, "utilities": 100},
+            "expected_balance": 200
+        },
+        {
+            "income": 2000,
+            "expenses": {"rent": 1000, "groceries": 300, "utilities": 200},
+            "expected_balance": 500
+        }
+    ]
+}
